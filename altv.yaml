@@ -130,7 +130,7 @@ components:
               description: The Server ID
             maxPlayers:
               type: integer
-              description: The Maxium amount of Players that can play.
+              description: The Maximum amount of Players that can play.
             players:
               type: integer
               description: The current amount of Players on the Server.
@@ -150,14 +150,14 @@ components:
               description: The Server Port
             gameMode:
               type: string
-              description: The Server Gamemode
+              description: The Server Game mode
             website:
               type: string
               format: uri
               description: The Server Website
             language:
               type: string
-              description: The Server language as short Code. E.g. "en", "de"
+              description: The Server language as short code. E.g. "en", "de"
             description:
               type: string
               description: The Server description.
@@ -169,18 +169,18 @@ components:
               description: A Server needs at least a Diamond Altruist Membership.
             useEarlyAuth:
               type: boolean
-              description: State of EaryAuth Authentication of a Server.
+              description: State of EarlyAuth Authentication of a Server.
             earlyAuthUrl:
               type: string
               format: uri
-              description: The Url of the Early Auth Frontend
+              description: The URL of the Early Auth Frontend
             useCdn:
               type: boolean
               description: State of Server CDN
             cdnUrl:
               type: string
               format: uri
-              description: The Url of the Server CDN. Resource List = CDN_URL + /connect.json
+              description: The URL of the Server CDN. Resource List = CDN_URL + /connect.json
             useVoiceChat:
               type: boolean
               description: State of Server Voice Chat
@@ -188,11 +188,11 @@ components:
               type: array
               items:
                 type: string
-              description: Server tags e.g. No Rules
+              description: Server tags, e.g. "No Rules"
             bannerUrl:
               type: string
               format: uri
-              description: The Url of the Server Banner. (A server needs at least a Ruby Altruist Membership for that.)
+              description: The URL of the Server Banner. (A server needs at least a Ruby Altruist Membership for that.)
             branch:
               type: string
               description: The Server Branch. E.g. release, dev.
@@ -201,7 +201,7 @@ components:
               description: This has been -1 for a long time.
             version:
               type: string
-              description: The Servers alt:V Version.
+              description: The Server's alt:V Version.
             lastUpdate:
               type: integer
               description: A Unix timestamp when the Server last sent data.
@@ -217,7 +217,7 @@ components:
             description: The Server ID
           maxPlayers:
             type: integer
-            description: The Maxium amount of Players that can play.
+            description: The Maximum amount of Players that can play.
           players:
             type: integer
             description: The current amount of Players on the Server.
@@ -237,7 +237,7 @@ components:
             description: The Server Port
           gameMode:
             type: string
-            description: The Server Gamemode
+            description: The Server Game mode
           website:
             type: string
             format: uri
@@ -245,7 +245,7 @@ components:
           language:
             type: string
             format: language
-            description: The Server language as short Code. E.g. "en", "de"
+            description: The Server language as short code. E.g. "en", "de"
           description:
             type: string
             description: The Server description.
@@ -257,17 +257,17 @@ components:
             description: A Server needs at least a Diamond Altruist Membership.
           useEarlyAuth:
             type: boolean
-            description: State of EaryAuth Authentication of a Server.
+            description: State of EarlyAuth Authentication of a Server.
           earlyAuthUrl:
             type: string
-            description: The Url of the Early Auth Frontend
+            description: The URL of the Early Auth Frontend
           useCdn:
             type: boolean
             description: State of Server CDN
           cdnUrl:
             type: string
             format: uri
-            description: The Url of the Server CDN. Resource List = CDN_URL + /connect.json
+            description: The URL of the Server CDN. Resource List = CDN_URL + /connect.json
           useVoiceChat:
             type: boolean
             description: State of Server Voice Chat
@@ -275,11 +275,11 @@ components:
             type: array
             items:
               type: string
-            description: Server tags e.g. No Rules
+            description: Server tags, e.g. "No Rules"
           bannerUrl:
             type: string
             format: uri
-            description: The Url of the Server Banner. (A server needs at least a Ruby Altruist Membership for that.)
+            description: The URL of the Server Banner. (A server needs at least a Ruby Altruist Membership for that.)
           branch:
             type: string
             description: The Server Branch. E.g. release, dev.
@@ -288,7 +288,7 @@ components:
             description: This has been -1 for a long time.
           version:
             type: string
-            description: The Servers alt:V Version.
+            description: The Server's alt:V Version.
           lastUpdate:
             type: integer
             description: A Unix timestamp when the Server last sent data.
