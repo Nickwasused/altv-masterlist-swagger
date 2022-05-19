@@ -1,11 +1,11 @@
 {
     "urls": [
       {
-        "url": "/altv.json",
+        "url": "https://nickwasused.com/altv-masterlist-swagger/altv.json",
         "name": "altv-masterlist"
       },
       {
-        "url": "/altv_u.json",
+        "url": "https://nickwasused.com/altv-masterlist-swagger/altv_u.json",
         "name": "altstats.net"
       }
     ]
