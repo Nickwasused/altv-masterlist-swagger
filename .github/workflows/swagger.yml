@@ -14,15 +14,15 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Generate Swagger UI
-        uses: Legion2/swagger-ui-action@v1
+        uses: Nickwasused/swagger-ui-action@v1
         with:
           output: swagger-ui
           swagger-config-file: swagger-config.json
           
-      - name: Copy .json file
+      - name: Copy .yaml file
         run: |
-          cp ./json/altv.json swagger-ui
-          cp ./json/altv_u.json swagger-ui
+          cp ./altv.yaml swagger-ui
+          cp ./altv_u.yaml swagger-ui
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
