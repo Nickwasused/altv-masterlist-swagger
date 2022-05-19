@@ -279,7 +279,7 @@ components:
             type: array
             items:
               type: string
-            description: Server tags, e.g. "No Rules"
+            description: Server tags, e.g. "No Rules".
           bannerUrl:
             type: string
             format: uri
