@@ -310,3 +310,7 @@ components:
 servers:
   - url: https://api.altv.mp/
   - url: http://api.altv.mp/
+  
+externalDocs:
+  description: "Masterlist API Docs"
+  url: "https://docs.altv.mp/articles/master_list_api.html"
