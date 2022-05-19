@@ -19,6 +19,11 @@ jobs:
           output: swagger-ui
           swagger-config-file: swagger-config.json
           
+      - name: Copy .yaml file
+        run: |
+          cp altv.yaml swagger-ui
+          cp altv_u.yaml swagger-ui
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
