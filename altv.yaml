@@ -1,0 +1,316 @@
+openapi: 3.0.0
+info:
+  description: The master list api allows you to fetch data from the alt:V master list service.
+  version: 9.15.0
+  title: altv-masterlist
+  termsOfService: https://altv.mp/terms-of-service.pdf
+  contact:
+    email: contact@alt-mp.com
+  license:
+    name: Mozilla Public License 2.0
+    url: https://github.com/Nickwasused/altv-masterlist-swagger/blob/main/LICENSE
+paths:
+  /servers:
+    get:
+      tags:
+      - "stats"
+      summary: Statistics
+      description: Statistics - Player Count across all servers & The amount of servers online
+      operationId: servers
+      responses:
+        '200':
+          description: Server Statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerStats'
+          
+  /servers/list:
+    get:
+      tags:
+      - "server"
+      summary: Server List
+      description: Servers - All information known about all servers (Name, Description, IP, Language, Website, Etc.)
+      operationId: servers-list
+      responses:
+        '200':
+          description: A Server Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerList'
+          
+  "/server/{MASTERLIST_ID}":
+    get:
+      tags:
+      - "server"
+      summary: server
+      description: Specific Server - Filters server list for a specific one. Uses "id" which is unique to the server token
+      operationId: server
+      parameters:
+        - name: MASTERLIST_ID
+          in: path
+          description: ID which is unique to the server token
+          required: true
+          schema:
+            type: string
+            format: string
+      responses:
+        '200':
+          description: A Server Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Server'
+          
+  "/avg/{MASTERLIST_ID}/{TIME}":
+    get:
+      tags:
+      - "stats"
+      summary: average
+      description: Averages - Returns averages data about the specified server (TIME = 1d, 7d, 31d)
+      operationId: average
+      parameters:
+        - name: MASTERLIST_ID
+          in: path
+          description: ID which is unique to the server token
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: TIME
+          in: path
+          description: TIME = 1d, 7d, 31d
+          required: true
+          schema:
+            type: string
+            format: string
+            pattern: '^(1d)|(7d)|(31d)(1D)|(7D)|(31D)$'
+      responses:
+        "200":
+          description: api responded
+          
+  "/max/{MASTERLIST_ID}/{TIME}":
+    get:
+      tags:
+      - "stats"
+      summary: maximum
+      description: Maximum - Returns maximum data about the specified server (TIME = 1d, 7d, 31d)
+      operationId: maximum
+      parameters:
+        - name: MASTERLIST_ID
+          in: path
+          description: ID which is unique to the server token
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: TIME
+          in: path
+          description: TIME = 1d, 7d, 31d
+          required: true
+          schema:
+            type: string
+            format: string
+            pattern: '^(1d)|(7d)|(31d)(1D)|(7D)|(31D)$'
+      responses:
+        "200":
+          description: api responded
+
+components:
+  schemas:
+    Server:
+      type: object
+      properties:
+        active:
+          type: boolean
+          description: The Server Status
+        info:
+          type: object
+          properties:
+            id:
+              type: string
+              pattern: '^[0-9a-zA-Z]{32}$'
+              description: The Server ID
+            maxPlayers:
+              type: integer
+              description: The Maximum amount of Players that can play.
+            players:
+              type: integer
+              description: The current amount of Players on the Server.
+            name:
+              type: string
+              description: The Server Name
+            locked:
+              type: boolean
+              description: State of Server password protection.
+            host:
+              type: string
+              format: ipv4
+              description: The Server IP/Hostname
+            port:
+              type: integer
+              format: port
+              description: The Server Port
+            gameMode:
+              type: string
+              description: The Server Game mode
+            website:
+              type: string
+              format: uri
+              description: The Server Website
+            language:
+              type: string
+              description: The Server language as short code. E.g. "en", "de"
+            description:
+              type: string
+              description: The Server description.
+            verified:
+              type: boolean
+              description: State of Server verification. (A Server needs a certain amount of Players for that over a big timespan)
+            promoted:
+              type: boolean
+              description: A Server needs at least a Diamond Altruist Membership.
+            useEarlyAuth:
+              type: boolean
+              description: State of EarlyAuth Authentication of a Server.
+            earlyAuthUrl:
+              type: string
+              format: uri
+              description: The URL of the Early Auth Frontend
+            useCdn:
+              type: boolean
+              description: State of Server CDN
+            cdnUrl:
+              type: string
+              format: uri
+              description: The URL of the Server CDN. Resource List = CDN_URL + /connect.json
+            useVoiceChat:
+              type: boolean
+              description: State of Server Voice Chat
+            tags:
+              type: array
+              items:
+                type: string
+              description: Server tags, e.g. "No Rules"
+            bannerUrl:
+              type: string
+              format: uri
+              description: The URL of the Server Banner. (A server needs at least a Ruby Altruist Membership for that.)
+            branch:
+              type: string
+              description: The Server Branch. E.g. release, dev.
+            build:
+              type: integer
+              description: This has been -1 for a long time.
+            version:
+              type: string
+              description: The Server's alt:V Version.
+            lastUpdate:
+              type: integer
+              description: A Unix timestamp when the Server last sent data.
+    
+    ServerList:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            pattern: '^[0-9a-zA-Z]{32}$'
+            description: The Server ID
+          maxPlayers:
+            type: integer
+            description: The Maximum amount of Players that can play.
+          players:
+            type: integer
+            description: The current amount of Players on the Server.
+          name:
+            type: string
+            description: The Server Name
+          locked:
+            type: boolean
+            description: State of Server password protection.
+          host:
+            type: string
+            format: ipv4
+            description: The Server IP/Hostname
+          port:
+            type: integer
+            format: port
+            description: The Server Port
+          gameMode:
+            type: string
+            description: The Server Game mode
+          website:
+            type: string
+            format: uri
+            description: The Server Website
+          language:
+            type: string
+            format: language
+            description: The Server language as short code. E.g. "en", "de"
+          description:
+            type: string
+            description: The Server description.
+          verified:
+            type: boolean
+            description: State of Server verification. (A Server needs a certain amount of Players for that over a big timespan)
+          promoted:
+            type: boolean
+            description: A Server needs at least a Diamond Altruist Membership.
+          useEarlyAuth:
+            type: boolean
+            description: State of EarlyAuth Authentication of a Server.
+          earlyAuthUrl:
+            type: string
+            description: The URL of the Early Auth Frontend
+          useCdn:
+            type: boolean
+            description: State of Server CDN
+          cdnUrl:
+            type: string
+            format: uri
+            description: The URL of the Server CDN. Resource List = CDN_URL + /connect.json
+          useVoiceChat:
+            type: boolean
+            description: State of Server Voice Chat
+          tags:
+            type: array
+            items:
+              type: string
+            description: Server tags, e.g. "No Rules"
+          bannerUrl:
+            type: string
+            format: uri
+            description: The URL of the Server Banner. (A server needs at least a Ruby Altruist Membership for that.)
+          branch:
+            type: string
+            description: The Server Branch. E.g. release, dev.
+          build:
+            type: integer
+            description: This has been -1 for a long time.
+          version:
+            type: string
+            description: The Server's alt:V Version.
+          lastUpdate:
+            type: integer
+            description: A Unix timestamp when the Server last sent data.
+            
+    ServerStats:
+      type: object
+      properties:
+        serversCount:
+          type: integer
+          description: The Amount of Servers online
+        playersCount:
+          type: integer
+          description: The Amount of Players online
+
+servers:
+  - url: https://api.altv.mp/
+  - url: http://api.altv.mp/
+  
+externalDocs:
+  description: "Masterlist API Docs"
+  url: "https://docs.altv.mp/articles/master_list_api.html"
