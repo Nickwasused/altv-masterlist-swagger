@@ -18,8 +18,12 @@ paths:
         online
       operationId: servers
       responses:
-        "200":
-          description: api responded
+        '200':
+          description: Server Statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerStats'
           
   /servers/list:
     get:
@@ -288,6 +292,16 @@ components:
           lastUpdate:
             type: integer
             description: A Unix timestamp when the Server last sent data.
+            
+    ServerStats:
+      type: object
+      properties:
+        serversCount:
+          type: integer
+          description: The Amount of Servers online
+        playersCount:
+          type: integer
+          description: The Amount of Players online
 
 servers:
   - url: https://api.altv.mp/
