@@ -19,10 +19,10 @@ jobs:
           output: swagger-ui
           swagger-config-file: swagger-config.json
           
-      - name: Copy .yaml file
+      - name: Copy .json file
         run: |
-          cp ./json/altv.yaml swagger-ui
-          cp ./json/altv_u.yaml swagger-ui
+          cp ./json/altv.json swagger-ui
+          cp ./json/altv_u.json swagger-ui
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
