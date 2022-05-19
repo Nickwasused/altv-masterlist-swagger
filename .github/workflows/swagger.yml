@@ -21,8 +21,8 @@ jobs:
           
       - name: Copy .yaml file
         run: |
-          cp json/altv.yaml swagger-ui
-          cp json/altv_u.yaml swagger-ui
+          cp ./json/altv.yaml swagger-ui
+          cp ./json/altv_u.yaml swagger-ui
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
