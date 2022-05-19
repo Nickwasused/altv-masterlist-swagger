@@ -1,11 +1,11 @@
 {
     "urls": [
       {
-        "url": "/altv.yaml",
+        "url": "/altv.json",
         "name": "altv-masterlist"
       },
       {
-        "url": "/altv_u.yaml",
+        "url": "/altv_u.json",
         "name": "altstats.net"
       }
     ]
