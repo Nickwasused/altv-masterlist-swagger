@@ -85,7 +85,7 @@ paths:
           schema:
             type: string
             format: string
-            pattern: '^(1d)|(7d)|(31d)(1D)|(7D)|(31D)$'
+            pattern: '^(1d)|(7d)|(31d)|(1D)|(7D)|(31D)$'
       responses:
         "200":
           description: api responded
@@ -112,7 +112,7 @@ paths:
           schema:
             type: string
             format: string
-            pattern: '^(1d)|(7d)|(31d)(1D)|(7D)|(31D)$'
+            pattern: '^(1d)|(7d)|(31d)|(1D)|(7D)|(31D)$'
       responses:
         "200":
           description: api responded
