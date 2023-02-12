@@ -309,7 +309,7 @@ components:
 
 servers:
   - url: https://api.altv.mp/
-  - url: http://api.altv.mp/
+  - url: https://api.alt-mp.com/
   
 externalDocs:
   description: "Masterlist API Docs"
