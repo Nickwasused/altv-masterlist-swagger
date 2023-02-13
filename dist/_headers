@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: default-src 'self'; connect-src 'self' https://api.altv.mp/ https://cdn.altv.mp/ https://api.alt-mp.com/ https://api.altstats.net/;
+  Content-Security-Policy: default-src 'self' https://validator.swagger.io/ data:; connect-src 'self' https://api.altv.mp/ https://cdn.altv.mp/ https://api.alt-mp.com/ https://api.altstats.net/; script-src 'self' https://static.cloudflareinsights.com/;
   Permissions-Policy: interest-cohort=()
   Referrer-Policy: no-referrer-when-downgrade
   X-Frame-Options: DENY
