@@ -308,8 +308,8 @@ components:
           description: The Amount of Players online
 
 servers:
-  - url: https://api.altv.mp/
   - url: https://api.alt-mp.com/
+  - url: https://api.altv.mp/
   
 externalDocs:
   description: "Masterlist API Docs"
