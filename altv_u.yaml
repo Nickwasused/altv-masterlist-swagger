@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   description: altstats.net - alt:V Stats is a alternative server list, developed and supported by members of the altMP Team. It has additional statistics about servers like player count for the last 24 hours, 7 days or month and you have a server specific API. like showing the player count for the last month are premium features, you need to pay for them to enable them.
   version: 9.15.0
