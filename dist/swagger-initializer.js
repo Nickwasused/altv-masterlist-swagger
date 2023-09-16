@@ -5,11 +5,11 @@ window.onload = function() {
   window.ui = SwaggerUIBundle({
     urls: [
       {
-        "url": "/altv.yaml",
+        "url": "./altv.yaml",
         "name": "altv-masterlist"
       },
       {
-        "url": "/altv_u.yaml",
+        "url": "./altv_u.yaml",
         "name": "altstats.net"
       }
     ],
