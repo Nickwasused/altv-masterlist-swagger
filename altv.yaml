@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   description: The master list api allows you to fetch data from the alt:V master list service.
   version: 9.15.0
@@ -308,8 +308,8 @@ components:
           description: The Amount of Players online
 
 servers:
-  - url: https://api.altv.mp/
   - url: https://api.alt-mp.com/
+  - url: https://api.altv.mp/
   
 externalDocs:
   description: "Masterlist API Docs"
