@@ -38,7 +38,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ServerList'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Server'
           
   "/servers/{MASTERLIST_ID}":
     get:
@@ -220,11 +222,6 @@ components:
         address:
           type: string
           description: the connection adress of the server
-
-    ServerList:
-      type: array
-      items:
-        $ref: "#/definitions/Server"
             
     ServerStats:
       type: object
