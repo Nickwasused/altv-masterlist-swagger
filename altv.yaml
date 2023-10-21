@@ -238,7 +238,7 @@ components:
         totalPlayersCount:
           type: integer
           description: The Total Amount of Servers online
-        playersCount:
+        totalServersCount:
           type: integer
           totalServersCount: The Total Amount of Players online
 
