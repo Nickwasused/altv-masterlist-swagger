@@ -40,7 +40,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerList'
           
-  "/server/{MASTERLIST_ID}":
+  "/servers/{MASTERLIST_ID}":
     get:
       tags:
       - "server"
@@ -64,7 +64,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Server'
           
-  "/avg/{MASTERLIST_ID}/{TIME}":
+  "/servers/{MASTERLIST_ID}/avg/{TIME}":
     get:
       tags:
       - "stats"
@@ -92,7 +92,7 @@ paths:
         "200":
           description: api responded
           
-  "/max/{MASTERLIST_ID}/{TIME}":
+  "/servers/{MASTERLIST_ID}/max/{TIME}":
     get:
       tags:
       - "stats"
@@ -224,7 +224,7 @@ components:
     ServerList:
       type: array
       items:
-        type: Server
+        $ref: "#/definitions/Server"
             
     ServerStats:
       type: object
