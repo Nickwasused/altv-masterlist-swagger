@@ -91,8 +91,12 @@ paths:
             format: string
             pattern: '^(1d)|(7d)|(31d)|(1D)|(7D)|(31D)$'
       responses:
-        "200":
-          description: api responded
+        '200':
+          description: Server Statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stat'
           
   "/servers/{MASTERLIST_ID}/max/{TIME}":
     get:
@@ -119,8 +123,12 @@ paths:
             format: string
             pattern: '^(1d)|(7d)|(31d)|(1D)|(7D)|(31D)$'
       responses:
-        "200":
-          description: api responded
+        '200':
+          description: Server Statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stat'
 
 components:
   schemas:
@@ -238,6 +246,16 @@ components:
         totalServersCount:
           type: integer
           totalServersCount: The Total Amount of Players online
+
+    Stat:
+      type: object
+      properties:
+        t:
+          type: integer
+          description: timestamp of data
+        c:
+          type: integer
+          description: player count
 
 servers:
   - url: https://api.alt-mp.com/
