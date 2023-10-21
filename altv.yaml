@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   description: The master list api allows you to fetch data from the alt:V master list service.
-  version: 9.15.0
+  version: 15.3.0
   title: altv-masterlist
   termsOfService: https://altv.mp/terms-of-service.pdf
   contact:
@@ -10,7 +10,7 @@ info:
     name: Mozilla Public License 2.0
     url: https://github.com/Nickwasused/altv-masterlist-swagger/blob/main/LICENSE
 paths:
-  /servers:
+  /servers/info:
     get:
       tags:
       - "stats"
@@ -25,7 +25,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerStats'
           
-  /servers/list:
+  /servers:
     get:
       tags:
       - "server"
@@ -54,6 +54,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: '^[a-zA-Z0-9]{7}$'
             format: string
       responses:
         '200':
@@ -77,6 +78,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: '^[a-zA-Z0-9]{7}$'
             format: string
         - name: TIME
           in: path
@@ -104,6 +106,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: '^[a-zA-Z0-9]{7}$'
             format: string
         - name: TIME
           in: path
@@ -122,190 +125,122 @@ components:
     Server:
       type: object
       properties:
-        active:
+        ip:
+          type: ipv4
+          description: The ip adress of the server
+        playersCount:
+          type: integer
+          description: The current amount of Players on the Server.
+        maxPlayersCount:
+          type: integer
+          description: The Maximum amount of Players that can play.
+        passworded:
           type: boolean
-          description: The Server Status
-        info:
-          type: object
-          properties:
-            id:
-              type: string
-              pattern: '^[0-9a-zA-Z]{32}$'
-              description: The Server ID
-            maxPlayers:
-              type: integer
-              description: The Maximum amount of Players that can play.
-            players:
-              type: integer
-              description: The current amount of Players on the Server.
-            name:
-              type: string
-              description: The Server Name
-            locked:
-              type: boolean
-              description: State of Server password protection.
-            host:
-              type: string
-              format: ipv4
-              description: The Server IP/Hostname
-            port:
-              type: integer
-              format: port
-              description: The Server Port
-            gameMode:
-              type: string
-              description: The Server Game mode
-            website:
-              type: string
-              format: uri
-              description: The Server Website
-            language:
-              type: string
-              description: The Server language as short code. E.g. "en", "de"
-            description:
-              type: string
-              description: The Server description.
-            verified:
-              type: boolean
-              description: State of Server verification. (A Server needs a certain amount of Players for that over a big timespan)
-            promoted:
-              type: boolean
-              description: A Server needs at least a Diamond Altruist Membership.
-            useEarlyAuth:
-              type: boolean
-              description: State of EarlyAuth Authentication of a Server.
-            earlyAuthUrl:
-              type: string
-              format: uri
-              description: The URL of the Early Auth Frontend
-            useCdn:
-              type: boolean
-              description: State of Server CDN
-            cdnUrl:
-              type: string
-              format: uri
-              description: The URL of the Server CDN. Resource List = CDN_URL + /connect.json
-            useVoiceChat:
-              type: boolean
-              description: State of Server Voice Chat
-            tags:
-              type: array
-              items:
-                type: string
-              description: Server tags, e.g. "No Rules"
-            bannerUrl:
-              type: string
-              format: uri
-              description: The URL of the Server Banner. (A server needs at least a Ruby Altruist Membership for that.)
-            branch:
-              type: string
-              description: The Server Branch. E.g. release, dev.
-            build:
-              type: integer
-              description: This has been -1 for a long time.
-            version:
-              type: string
-              description: The Server's alt:V Version.
-            lastUpdate:
-              type: integer
-              description: A Unix timestamp when the Server last sent data.
-    
+          description: State of Server password protection.
+        port:
+          type: integer
+          format: port
+          description: The Server Port
+        language:
+          type: string
+          description: The Server language as short code. E.g. "en", "de"
+        useEarlyAuth:
+          type: boolean
+          description: State of EarlyAuth Authentication of a Server.
+        earlyAuthCdn:
+          type: string
+          format: uri
+          description: The URL of the Early Auth Frontend
+        useCdn:
+          type: boolean
+          description: State of Server CDN
+        cdnUrl:
+          type: string
+          format: uri
+          description: The URL of the Server CDN. Resource List = CDN_URL + /connect.json
+        useVoiceChat:
+          type: boolean
+          description: State of Server Voice Chat
+        version:
+          type: string
+          description: the alt:V Version of the server
+        branch:
+          type: string
+          description: the alt:V Branch of the server e.g. release, dev, rc
+        available:
+          type: boolean
+          description: offline/online status of the server?
+        banned:
+          type: boolean
+          description: if the server is banned from alt:V
+        name:
+          type: string
+          description: The Server Name
+        publicId:
+          type: string
+          pattern: '^[a-zA-Z0-9]{7}$'
+          description: The Server ID
+        vanityUrl:
+          type: string
+          description: this id can be used with altv.run e.g. altv.run/homestate
+        website:
+          type: string
+          format: uri
+          description: The Server Website
+        gameMode:
+          type: string
+          description: The Server Game mode
+        description:
+          type: string
+          description: The Server description.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Server tags, e.g. "No Rules"
+        lastTimeUpdate:
+          type: string
+          description: A timestamp when the Server last sent data. e.g. 2023-10-21T08:00:22.830909841Z
+        verified:
+          type: boolean
+          description: State of Server verification. (A Server needs a certain amount of Players for that over a big timespan)
+        promoted:
+          type: boolean
+          description: A Server needs at least a Diamond Altruist Membership.
+        visible:
+          type: boolean
+          description: visibility status in the masterlist
+        hasCustomSkin:
+          type: boolean
+          description: if the server has a custom skin
+        bannerUrl:
+          type: string
+          format: uri
+          description: The URL of the Server Banner. (A server needs at least a Ruby Altruist Membership for that.)
+        address:
+          type: string
+          description: the connection adress of the server
+
     ServerList:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: string
-            pattern: '^[0-9a-zA-Z]{32}$'
-            description: The Server ID
-          maxPlayers:
-            type: integer
-            description: The Maximum amount of Players that can play.
-          players:
-            type: integer
-            description: The current amount of Players on the Server.
-          name:
-            type: string
-            description: The Server Name
-          locked:
-            type: boolean
-            description: State of Server password protection.
-          host:
-            type: string
-            format: ipv4
-            description: The Server IP/Hostname
-          port:
-            type: integer
-            format: port
-            description: The Server Port
-          gameMode:
-            type: string
-            description: The Server Game mode
-          website:
-            type: string
-            format: uri
-            description: The Server Website
-          language:
-            type: string
-            format: language
-            description: The Server language as short code. E.g. "en", "de"
-          description:
-            type: string
-            description: The Server description.
-          verified:
-            type: boolean
-            description: State of Server verification. (A Server needs a certain amount of Players for that over a big timespan)
-          promoted:
-            type: boolean
-            description: A Server needs at least a Diamond Altruist Membership.
-          useEarlyAuth:
-            type: boolean
-            description: State of EarlyAuth Authentication of a Server.
-          earlyAuthUrl:
-            type: string
-            description: The URL of the Early Auth Frontend
-          useCdn:
-            type: boolean
-            description: State of Server CDN
-          cdnUrl:
-            type: string
-            format: uri
-            description: The URL of the Server CDN. Resource List = CDN_URL + /connect.json
-          useVoiceChat:
-            type: boolean
-            description: State of Server Voice Chat
-          tags:
-            type: array
-            items:
-              type: string
-            description: Server tags, e.g. "No Rules".
-          bannerUrl:
-            type: string
-            format: uri
-            description: The URL of the Server Banner. (A server needs at least a Ruby Altruist Membership for that.)
-          branch:
-            type: string
-            description: The Server Branch. E.g. release, dev.
-          build:
-            type: integer
-            description: This has been -1 for a long time.
-          version:
-            type: string
-            description: The Server's alt:V Version.
-          lastUpdate:
-            type: integer
-            description: A Unix timestamp when the Server last sent data.
+        type: Server
             
     ServerStats:
       type: object
       properties:
-        serversCount:
-          type: integer
-          description: The Amount of Servers online
         playersCount:
           type: integer
           description: The Amount of Players online
+        serversCount:
+          type: integer
+          description: The Amount of Servers online
+        totalPlayersCount:
+          type: integer
+          description: The Total Amount of Servers online
+        playersCount:
+          type: integer
+          totalServersCount: The Total Amount of Players online
 
 servers:
   - url: https://api.alt-mp.com/
