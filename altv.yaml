@@ -157,7 +157,7 @@ components:
         useEarlyAuth:
           type: boolean
           description: State of EarlyAuth Authentication of a Server.
-        earlyAuthCdn:
+        earlyAuthUrl:
           type: string
           format: uri
           description: The URL of the Early Auth Frontend
