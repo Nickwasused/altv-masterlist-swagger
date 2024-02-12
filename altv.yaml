@@ -256,8 +256,8 @@ components:
           description: The Total Amount of Players online
         peakServers:
           type: integer
-          description: 
-        peakPlayers: The peak player Count
+          description: The peak player Count 
+        peakPlayers:
           type: integer
           description: The peak Server Count
 
