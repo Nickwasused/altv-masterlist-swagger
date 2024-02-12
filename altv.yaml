@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   description: The master list api allows you to fetch data from the alt:V master list service.
-  version: 15.3.0
+  version: 16.0.95
   title: altv-masterlist
   termsOfService: https://altv.mp/terms-of-service.pdf
   contact:
@@ -230,6 +230,14 @@ components:
         address:
           type: string
           description: the connection adress of the server
+        group:
+          type: object
+          properties:
+            id:
+              type: string
+              pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+            name:
+              type: string
             
     ServerStats:
       type: object
