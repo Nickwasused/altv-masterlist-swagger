@@ -253,7 +253,13 @@ components:
           description: The Total Amount of Servers online
         totalServersCount:
           type: integer
-          totalServersCount: The Total Amount of Players online
+          description: The Total Amount of Players online
+        peakServers:
+          type: integer
+          description: 
+        peakPlayers: The peak player Count
+          type: integer
+          description: The peak Server Count
 
     Stat:
       type: object
