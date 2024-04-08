@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   description: The master list api allows you to fetch data from the alt:V master list service.
-  version: 16.0.95
+  version: 16.0.151
   title: altv-masterlist
   termsOfService: https://altv.mp/terms-of-service.pdf
   contact:
@@ -135,9 +135,6 @@ components:
     Server:
       type: object
       properties:
-        ip:
-          type: ipv4
-          description: The ip adress of the server
         playersCount:
           type: integer
           description: The current amount of Players on the Server.
@@ -229,7 +226,7 @@ components:
           description: The URL of the Server Banner. (A server needs at least a Ruby Altruist Membership for that.)
         address:
           type: string
-          description: the connection adress of the server
+          description: the connection IP adress of the server with port split by ":"
         group:
           type: object
           properties:
@@ -238,6 +235,16 @@ components:
               pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
             name:
               type: string
+            iconUrl:
+              type: string
+            pinned:
+              type: boolean
+        masterlist_icon_url:
+          type: string
+          description: Server icon shown on masterlist
+        masterlist_banner_url:
+          type: string
+          description: Banner that is shown when you click on the server in the masterlist
             
     ServerStats:
       type: object
