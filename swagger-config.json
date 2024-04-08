@@ -3,10 +3,6 @@
       {
         "url": "./altv.yaml",
         "name": "altv-masterlist"
-      },
-      {
-        "url": "./altv_u.yaml",
-        "name": "altstats.net"
       }
     ]
   }
