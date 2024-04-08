@@ -7,10 +7,6 @@ window.onload = function() {
       {
         "url": "./altv.yaml",
         "name": "altv-masterlist"
-      },
-      {
-        "url": "./altv_u.yaml",
-        "name": "altstats.net"
       }
     ],
     dom_id: '#swagger-ui',
